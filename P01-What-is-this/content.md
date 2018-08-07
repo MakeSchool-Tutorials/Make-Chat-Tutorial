@@ -11,14 +11,14 @@ Some types of applications that use socket.io are the following:
 1. Live Messaging / Chat Rooms
 2. Realtime Data Analytics
 3. Multiplayer Games such as Agar.io or Slither.io
-4. The application you're going to make.
+4. Applications you make after this tutorial (hopefully)
 
 ## But how does it work?
 Socket.io uses a special protocol called WebSocket, which allows for the realtime communication between a web server and a web client.
 
 **Please** do not try to understand WebSocket as Socket.io does not expect you to know jack about it.
 
-You can think of Socket.io as a simple wrapper for the complex WebSocket, with some more spicy features included.
+You can think of Socket.io as a simple wrapper for the complex WebSocket, with some extra spice included.
 
 ## No, I must learn WebSocket.
 Okay smart guy, knock yourself [out](https://hpbn.co/websocket/).

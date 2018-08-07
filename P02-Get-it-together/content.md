@@ -28,7 +28,7 @@ Here's what your app.js should look like.
 const express = require('express');
 const app = express();
 //Socket.io has to use the http server
-const http = require('http').Server(app);
+const server = require('http').Server(app);
 
 //Express View Engine for Handlebars
 const exphbs  = require('express-handlebars');
@@ -39,7 +39,7 @@ app.get('/', (req, res) => {
   res.render('index.handlebars');
 })
 
-http.listen('3000', () => {
+server.listen('3000', () => {
   console.log('Server listening on Port 3000');
 })
 ```
