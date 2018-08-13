@@ -36,9 +36,8 @@ I'll give you the new handlebars and CSS.
             <div class="newChannelForm"><input id="newChannelInput" placeholder="New Channel" /><button id="newChannelBtn">Create</button></div>
             <div class="channel-current">General</div>
         </div>
-        <div class="usersOnline">
-            <h2>Online Users</h2>
-        </div>
+        <h2>Online Users</h2>
+        <div class="usersOnline"></div>
       </div>
       <div class="chatContainer">
         <div class="chatContainerFluid">
