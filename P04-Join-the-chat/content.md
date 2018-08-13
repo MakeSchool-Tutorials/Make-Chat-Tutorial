@@ -3,7 +3,7 @@ title: Give users an identity
 slug: Join-the-chat
 ---
 
-# Zen and the Art of Socket Maintenance
+## Zen and the Art of Socket Maintenance
 
 Before we move on to our next feature, let's make a separate file for our socket listeners. This will reduce the socket clutter in our app.js
 
