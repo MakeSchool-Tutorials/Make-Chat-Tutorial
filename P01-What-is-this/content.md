@@ -3,7 +3,7 @@ title: "What the hell is socket.io?"
 slug: What-is-this
 ---
 
-## Quick Summary
+# Quick Summary
 Socket.io is a realtime engine that is implemented on the server and client.
 
 Some types of applications that use socket.io are the following:
@@ -13,7 +13,7 @@ Some types of applications that use socket.io are the following:
 3. Multiplayer Games such as Agar.io or Slither.io
 4. Applications you make after this tutorial (hopefully)
 
-## But how does it work?
+# But how does it work?
 Socket.io uses a special protocol called WebSocket, which allows for the realtime communication between a web server and a web client.
 
 **Please** do not try to understand WebSocket as Socket.io does not expect you to know jack about it.

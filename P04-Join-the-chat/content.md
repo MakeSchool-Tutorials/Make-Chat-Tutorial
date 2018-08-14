@@ -3,7 +3,7 @@ title: Give users an identity
 slug: Join-the-chat
 ---
 
-## Zen and the Art of Socket Maintenance
+# Zen and the Art of Socket Maintenance
 
 Before we move on to our next feature, let's make a separate file for our socket listeners. This will reduce the socket clutter in our app.js
 
@@ -34,7 +34,7 @@ module.exports = (io, socket) => {
 }
 ```
 
-## What's in a name?
+# What's in a name?
 Let's update our handlebars to have a username form.
 ```html
 <!DOCTYPE html>
@@ -141,7 +141,7 @@ Now whenever the client **emits** a *"new user"* request, our server will be **o
 
 Go ahead and make a username, then check the server logs.
 
-## What goes around, comes around
+# What goes around, comes around
 We have successfully sent data from the client to the server with sockets.
 
 Now let's send data from the server to all clients.

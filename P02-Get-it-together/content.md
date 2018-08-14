@@ -3,7 +3,7 @@ title: "I'm ready to get started"
 slug: Get-it-together
 ---
 
-## Time to get your project started!
+# Time to get your project started!
 
 You should know the drill by now. But in case you forgotten the Node essentials...
 
@@ -46,7 +46,7 @@ server.listen('3000', () => {
 
 If this code makes no sense, I recommend this [tutorial](https://www.makeschool.com/online-courses/tutorials/giphy-search-app-with-node-js/your-node-environment).
 
-### Add in the views
+# Add in the views
 If you tried running the server, you'll notice you haven't yet created index.handlebars.
 Let's do that.
 
@@ -71,7 +71,7 @@ $ cd ..
 </html>
 ```
 
-## Looking Pretty Good!
+# Looking Pretty Good!
 Time to put on your big kid gear, because you're now about to make your first socket.io connection!
 
 ![Socket Connection](assets/socket.gif)

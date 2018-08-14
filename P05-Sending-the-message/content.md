@@ -3,7 +3,7 @@ title: Start chatting
 slug: Sending-the-message
 ---
 
-## Make it look like Slack
+# Make it look like Slack
 Now that our server and client are ready for new users, lets update the look of our website.
 
 I'll give you the new handlebars and CSS.
@@ -259,7 +259,7 @@ $(document).ready(()=>{
 ```
 Now if you enter a username, you will see the main content, as well as the online users.
 
-## Let's send some messages
+# Let's send some messages
 Look at the nice text area we have for sending messages. If only it worked...
 
 ```javascript
@@ -358,7 +358,7 @@ socket.on('new message', (data) => {
 
 Wow, what a lot of work. See if the page updates for each message.
 
-## Great, we have users and chat! We're finished right?
+# Great, we have users and chat! We're finished right?
 Not so fast, Sonic.
 
 If you were to reload or create a new instance in another tab, you will see that the online users and messages don't save.

@@ -3,7 +3,7 @@ title: "Connection Inspection"
 slug: Put-your-socks-on
 ---
 
-## Set up the Connection
+# Set up the Connection
 Let's import socket.io in our app.js
 ```javascript
 //app.js
@@ -36,7 +36,7 @@ Open up your browser to http://localhost:3000/ to see the server log message *"N
 
 What you don't see it? Did you remember to update your front end as well?
 
-## Take it to the Front
+# Take it to the Front
 Socket.io must be on both the server and client, so let's update accordingly.
 
 Create your very own public folder with an index.js.
@@ -89,7 +89,7 @@ Your app is now ready for realtime communications. Reload http://localhost:3000/
 
 ![Socket Connection](assets/log.png)
 
-## Great, but what happened?
+# Great, but what happened?
 Good question.
 Currently, your app.js is listening for any incoming socket connections from the client.
 
@@ -107,5 +107,5 @@ const socket = io.connect();
 ```
 
 ## Makes enough sense
-Great! We can now start building our chat application. 
+Great! We can now start building our chat application.
 Let's have our users create a username!
