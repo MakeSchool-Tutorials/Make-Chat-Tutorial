@@ -55,6 +55,8 @@ I'll give you the new handlebars and CSS.
 </html>
 ```
 
+**index.css**
+
 ```css
 *{
   font-family: helvetica;
