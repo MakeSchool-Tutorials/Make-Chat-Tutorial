@@ -2,4 +2,4 @@ title: "Make Chat"
 cover: cover.png
 solution_url: https://github.com/MakeSchool-Tutorials/Make-Chat-Tutorial/
 teaser_text: |
-    Build your very own Slack clone using Socket.io
+    Build your very own Slack using Socket.io
