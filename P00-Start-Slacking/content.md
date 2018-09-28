@@ -3,7 +3,6 @@ title: "What we're building"
 slug: Start-Slacking
 ---
 
-# What we're building
 If you've been attending Make School for any amount of time now, you should be very acquainted with the chat program Slack.
 
 This live messaging app along with its gaming brother Discord, rely heavily on realtime communication.

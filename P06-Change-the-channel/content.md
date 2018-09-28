@@ -3,7 +3,7 @@ title: Saving data and channels
 slug: Change-the-channel
 ---
 
-# Be a hero and save these users!
+## Be a hero and save these users!
 Don't worry we're not building a database for this application.
 
 We'll save everything locally, meaning that all of our data will be cleared on a server restart.
@@ -120,6 +120,7 @@ socket.on('user has left', (onlineUsers) => {
 ```
 
 # Channel Your energy
+
 Wow you made it this far. I hope you've been taking breaks because this next part is a bit much.
 
 We're now going to create different channels for users to create or join. Let's add some functionality to the channel creator on the client.
@@ -154,7 +155,7 @@ Notice how we have the **General** channel already included in our object. We wa
 
 The array value that comes with the channel key will be used to save each channel's messages.
 
-Let's now have our server be **on** *"New Channel"*.
+Let's now have our server be `on()` `"New Channel"`.
 
 ```javascript
 //chat.js
@@ -178,6 +179,7 @@ module.exports = (io, socket, onlineUsers, channels) => {
 ```
 
 ## Go to your room!
+
 Socket.io has this fancy thing called **rooms** in which different sockets(clients) can **join**.
 
 In the code we just put in, we did **socket.join(newChannel)** which is telling the socket to join the new channel room.
@@ -307,6 +309,7 @@ socket.on('user changed channel', (newChannel) => {
 Check out your application. Everything should now be working as it should!
 
 # What now??
+
 Well I have to say, I'm very proud of you for completing this tutorial!
 
 Extra Credit is implementing a private message system. You have all the tools you need to do this, I believe in you!

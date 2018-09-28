@@ -3,9 +3,7 @@ title: "I'm ready to get started"
 slug: Get-it-together
 ---
 
-# Time to get your project started!
-
-You should know the drill by now. But in case you forgotten the Node essentials...
+You know the drill by now. But in case you forgotten the Node essentials...
 
 ```bash
 $ mkdir your-project-name

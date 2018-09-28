@@ -3,9 +3,13 @@ title: "Connection Inspection"
 slug: Put-your-socks-on
 ---
 
+Let's just jump right in and get Socket.io working.
+
 # Set up the Connection
+
 Let's import socket.io in our app.js
-```javascript
+
+```js
 //app.js
 const express = require('express');
 const app = express();
@@ -28,7 +32,6 @@ app.get('/', (req, res) => {
 server.listen('3000', () => {
   console.log('Server listening on Port 3000');
 })
-
 ```
 
 You have now successfully set up your backend for incoming socket connections.
@@ -37,6 +40,7 @@ Open up your browser to http://localhost:3000/ to see the server log message *"N
 What you don't see it? Did you remember to update your front end as well?
 
 # Take it to the Front
+
 Socket.io must be on both the server and client, so let's update accordingly.
 
 Create your very own public folder with an index.js.
@@ -49,7 +53,8 @@ $ cd ..
 ```
 
 Make sure your app.js is using the public folder.
-```javascript
+
+```js
 //app.js
 //Express View Engine for Handlebars
 const exphbs  = require('express-handlebars');
@@ -60,6 +65,7 @@ app.use('/public', express.static('public'))
 ```
 
 Now update your handlebars to use the client-side socket.io script.
+
 ```html
 <!DOCTYPE html>
 <html>
@@ -75,10 +81,12 @@ Now update your handlebars to use the client-side socket.io script.
   </body>
 </html>
 ```
-As you notice, we're also including jquery to make the DOM manipulation easier.
 
-Finally add this code to index.js
-```javascript
+As you notice, we're also including jquery to make the DOM manipulation a little easier. Feel free not to include it and use your vanilla js powers you've learned in other tutorials.
+
+Finally add this code to `index.js`
+
+```js
 $(document).ready( () => {
   //Connect to the socket.io server
   const socket = io.connect();
@@ -90,22 +98,26 @@ Your app is now ready for realtime communications. Reload http://localhost:3000/
 ![Socket Connection](assets/log.png)
 
 # Great, but what happened?
+
 Good question.
+
 Currently, your app.js is listening for any incoming socket connections from the client.
 
 The *io.on("connection")* is a special listener that fires whenever a new client connects.
 
-```javascript
+```js
 io.on("connection", (socket) => {
   // Do something when a new socket(client) connection is formed
 })
 ```
 
-```javascript
+```js
 //Connect to the io(server)
 const socket = io.connect();
 ```
 
 ## Makes enough sense
+
 Great! We can now start building our chat application.
+
 Let's have our users create a username!

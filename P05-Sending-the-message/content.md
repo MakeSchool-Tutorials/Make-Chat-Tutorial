@@ -3,7 +3,8 @@ title: Start chatting
 slug: Sending-the-message
 ---
 
-# Make it look like Slack
+## Make it look like Slack
+
 Now that our server and client are ready for new users, lets update the look of our website.
 
 I'll give you the new handlebars and CSS.
@@ -231,7 +232,8 @@ label {
 }
 ```
 
-Also update your index.js accordingly.
+Also update your `index.js` accordingly.
+
 ```javascript
 //index.js
 $(document).ready(()=>{
@@ -255,11 +257,12 @@ $(document).ready(()=>{
   })
 
 })
-
 ```
+
 Now if you enter a username, you will see the main content, as well as the online users.
 
 # Let's send some messages
+
 Look at the nice text area we have for sending messages. If only it worked...
 
 ```javascript
@@ -305,13 +308,13 @@ $(document).ready(()=>{
 })
 ```
 
-A few things were added here. We are now saving the client's username to the *currentUser* variable.
+A few things were added here. We are now saving the client's username to the `currentUser` variable.
 
-We then make sure our send chat button **emits** *"new message"* to our server. As shown, you can emit multiple pieces of data.
+We then make sure our send chat button **emits** `"new message"` to our server. As shown, you can emit multiple pieces of data.
 
-In this case we are emitting *sender* and *message*.
+In this case we are emitting `sender` and `message`.
 
-Let's now create the *"new message"* listener on our server.
+Let's now create the `"new message"` listener on our server.
 
 ```javascript
 //chat.js
@@ -332,7 +335,7 @@ module.exports = (io, socket) => {
 }
 ```
 
-Simple enough. Notice how we can access the **data** sent like an object.
+Simple enough. Notice how we can access the `data` sent like an object.
 
 We should update the client to receive and show new messages from the server.
 
@@ -359,6 +362,7 @@ socket.on('new message', (data) => {
 Wow, what a lot of work. See if the page updates for each message.
 
 # Great, we have users and chat! We're finished right?
+
 Not so fast, Sonic.
 
 If you were to reload or create a new instance in another tab, you will see that the online users and messages don't save.

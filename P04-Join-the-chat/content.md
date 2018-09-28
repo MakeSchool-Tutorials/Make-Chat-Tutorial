@@ -3,7 +3,7 @@ title: Give users an identity
 slug: Join-the-chat
 ---
 
-# Zen and the Art of Socket Maintenance
+## Zen and the Art of Socket Maintenance
 
 Before we move on to our next feature, let's make a separate file for our socket listeners. This will reduce the socket clutter in our app.js
 
@@ -60,6 +60,7 @@ Let's update our handlebars to have a username form.
 ```
 
 I'll be a pal and give you some CSS to use too.
+
 ```bash
 $ cd public
 $ touch index.css
@@ -120,11 +121,13 @@ $(document).ready(()=>{
 ```
 
 This code **emits** to the server the new username.
+
 Now if you attempt to join the chat you will see that absolutely nothing happens.
 
 Why is that? We still have to add the correct socket listener on the backend.
 
 Update your chat.js accordingly
+
 ```javascript
 // chat.js
 module.exports = (io, socket) => {
@@ -142,6 +145,7 @@ Now whenever the client **emits** a *"new user"* request, our server will be **o
 Go ahead and make a username, then check the server logs.
 
 # What goes around, comes around
+
 We have successfully sent data from the client to the server with sockets.
 
 Now let's send data from the server to all clients.
@@ -196,4 +200,5 @@ Now both your server and clients will be logging out the new users.
 Open up two instances of http://localhost:3000/ and check their logs.
 
 ## Wow, that's cool!
+
 That's right bud, and this next part of the tutorial will be even cooler.
