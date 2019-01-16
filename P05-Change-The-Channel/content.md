@@ -1,9 +1,10 @@
 ---
-title: Saving data and channels
-slug: Change-the-channel
+title: "Saving Data and Channels"
+slug: change-the-channel
 ---
 
-## Be a hero and save these users!
+## Be a Hero and Save These Users!
+
 Don't worry we're not building a database for this application.
 
 We'll save everything locally, meaning that all of our data will be cleared on a server restart.

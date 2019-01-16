@@ -1,13 +1,13 @@
 ---
 title: "Connection Inspection"
-slug: Put-your-socks-on
+slug: put-your-socks-on
 ---
 
 Let's just jump right in and get Socket.io working.
 
 # Set up the Connection
 
-Let's import socket.io in our app.js
+Let's import socket.io in our `app.js`, and then open a connection and log that the connection opened.
 
 ```js
 //app.js
@@ -15,7 +15,7 @@ const express = require('express');
 const app = express();
 const server = require('http').Server(app);
 
-//Socket.io stuff
+//Socket.io
 const io = require('socket.io')(server);
 io.on("connection", (socket) => {
   console.log("🔌 New user connected! 🔌");
@@ -37,11 +37,9 @@ server.listen('3000', () => {
 You have now successfully set up your backend for incoming socket connections.
 Open up your browser to http://localhost:3000/ to see the server log message *"New user connected!"*
 
-What you don't see it? Did you remember to update your front end as well?
+# Take it to the Front End
 
-# Take it to the Front
-
-Socket.io must be on both the server and client, so let's update accordingly.
+Remember that we use Socket.io on both the server and client, so let's update our front end accordingly.
 
 Create your very own public folder with an index.js.
 
@@ -64,7 +62,7 @@ app.set('view engine', 'handlebars');
 app.use('/public', express.static('public'))
 ```
 
-Now update your handlebars to use the client-side socket.io script.
+The socket.io npm module automatically sets up a `/socket.io/socket.io.js` path in your project to the socket.io front end JavaScript. So we can update our handlebars to require the client-side socket.io script.
 
 ```html
 <!DOCTYPE html>
@@ -82,7 +80,7 @@ Now update your handlebars to use the client-side socket.io script.
 </html>
 ```
 
-As you notice, we're also including jquery to make the DOM manipulation a little easier. Feel free not to include it and use your vanilla js powers you've learned in other tutorials.
+As you notice, we're also including jQuery to make the DOM manipulation a little easier. Feel free not to include it and use your vanilla js powers you've learned in other tutorials.
 
 Finally add this code to `index.js`
 
@@ -103,15 +101,19 @@ Good question.
 
 Currently, your app.js is listening for any incoming socket connections from the client.
 
-The *io.on("connection")* is a special listener that fires whenever a new client connects.
+The *io.on("connection")* is a special listener that fires whenever a new client connects. So, for example, in a chat room application, you could message everyone that a new user joined the chat room when this event fires.
 
 ```js
+// app.js
+
 io.on("connection", (socket) => {
   // Do something when a new socket(client) connection is formed
 })
 ```
 
 ```js
+// public/index.js
+
 //Connect to the io(server)
 const socket = io.connect();
 ```

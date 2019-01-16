@@ -1,6 +1,6 @@
 ---
-title: Give users an identity
-slug: Join-the-chat
+title: "Give Users an Identity"
+slug: join-the-chat
 ---
 
 ## Zen and the Art of Socket Maintenance
@@ -9,12 +9,10 @@ Before we move on to our next feature, let's make a separate file for our socket
 
 ```bash
 $ mkdir sockets
-$ cd sockets
-$ touch chat.js
-$ cd ..
+$ touch sockets/chat.js
 ```
 
-Update app.js to read the new file.
+Update app.js to require the new file. We're going to pass the socket server (`io`) and the socket itself (`socket`) into our file.
 
 ```javascript
 //app.js
@@ -35,6 +33,7 @@ module.exports = (io, socket) => {
 ```
 
 # What's in a name?
+
 Let's update our handlebars to have a username form.
 ```html
 <!DOCTYPE html>
@@ -59,16 +58,14 @@ Let's update our handlebars to have a username form.
 </html>
 ```
 
-I'll be a pal and give you some CSS to use too.
+I'll be a pal and give you some CSS to use too. Remember to make your `public/index.css` first and require it in your `<head></head>` tag.
 
 ```bash
-$ cd public
-$ touch index.css
-$ cd ..
+$ touch public/index.css
 ```
 
 ```css
-/* index.css */
+/* public/index.css */
 *{
   font-family: helvetica;
 }
@@ -100,7 +97,10 @@ $ cd ..
 ```
 
 Feel free to reload the page to make sure your username form looks good to go.
-Let's add some client script to send the new username to the server.
+
+# Submitting the Form Via WebSocket
+
+Let's add some client script to send the new username to the server. Notice that we are not going to use an HTTP request, instead we can use a socket event on the connection we already have created! We'll create a new event called 'new user'. On the server we'll later create a listener to listen for events named this.
 
 ```javascript
 // index.js
@@ -124,7 +124,7 @@ This code **emits** to the server the new username.
 
 Now if you attempt to join the chat you will see that absolutely nothing happens.
 
-Why is that? We still have to add the correct socket listener on the backend.
+Why is that? We still have to add a matching socket listener on the backend that listens for an event called 'new user'.
 
 Update your chat.js accordingly
 
@@ -144,7 +144,7 @@ Now whenever the client **emits** a *"new user"* request, our server will be **o
 
 Go ahead and make a username, then check the server logs.
 
-# What goes around, comes around
+# What Goes Around, Comes Around
 
 We have successfully sent data from the client to the server with sockets.
 
@@ -163,13 +163,13 @@ socket.on('new user', (username) => {
 
 Notice how the server says *io.emit* instead of *socket.emit*.
 
-**io.emit** sends data to all clients
+**io.emit** sends data to all clients on the connection.
 
-**socket.emit** sends data to the client that sent the original data to the server
+**socket.emit** sends data to the client that sent the original data to the server.
 
 There's some more ways to emit data that we'll go in to later. These two are the most common.
 
-Now update your client script to be **on** (listening) for the *"new user"* **emit**.
+Now we have to setup the client to listen for any `'new user'` events coming from the server. we'll use the same sort of lingo: **on** (listening) *"new user"*.
 
 ```javascript
 // index.js
@@ -197,7 +197,7 @@ $(document).ready(() => {
 
 Now both your server and clients will be logging out the new users.
 
-Open up two instances of http://localhost:3000/ and check their logs.
+To simulate two connections, open up two browser windows and direct them both to http://localhost:3000/, login, and check both browser window's JavaScript consoles.
 
 ## Wow, that's cool!
 

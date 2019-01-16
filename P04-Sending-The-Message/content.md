@@ -1,13 +1,17 @@
 ---
-title: Start chatting
-slug: Sending-the-message
+title: "Start Chatting"
+slug: sending-the-message
 ---
 
-## Make it look like Slack
+## Make It Look Like Slack
 
 Now that our server and client are ready for new users, lets update the look of our website.
 
-I'll give you the new handlebars and CSS.
+Remember we want it to look roughly like this wireframe:
+
+![wireframe](make-chat-wireframe.png)
+
+I'll give you the new handlebars and CSS so you can fast forward a bit on the styling.
 
 ```html
 <!--index.handlebars-->
@@ -234,7 +238,11 @@ label {
 }
 ```
 
-Also update your `index.js` accordingly.
+# Display Online Users
+
+Let's update your `index.js` so it doesn't just log when someone joins the chat, but instead it displays their names in the "Online Users" section.
+
+Replace all your code in `public/index.js` with this code. Notice the line that uses the `.append()` function to append a new online user:
 
 ```javascript
 //index.js
@@ -261,11 +269,13 @@ $(document).ready(()=>{
 })
 ```
 
-Now if you enter a username, you will see the main content, as well as the online users.
+Now test everything again with two browsers. Enter a username and you should see the main content, as well as the online users.
 
 # Let's send some messages
 
 Look at the nice text area we have for sending messages. If only it worked...
+
+We need to wire up the `#sendChatBtn` to **emit** a `new message` event to the server, and have the server **emit** a `new message` event to all connected clients.
 
 ```javascript
 //index.js
@@ -339,7 +349,7 @@ module.exports = (io, socket) => {
 
 Simple enough. Notice how we can access the `data` sent like an object.
 
-We should update the client to receive and show new messages from the server.
+Finally we should update the client to listen for any `new message` events from the server, and when they come, append those new messages to the DOM for the user to see.
 
 ```javascript
 //index.js

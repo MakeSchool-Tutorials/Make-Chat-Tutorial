@@ -1,6 +1,6 @@
 ---
-title: "I'm ready to get started"
-slug: Get-it-together
+title: "I'm Ready to Get Started"
+slug: get-it-together
 ---
 
 You know the drill by now. But in case you forgotten the Node essentials...
@@ -11,15 +11,16 @@ $ cd your-project-name
 $ npm init
 ```
 
-When your package.json arrives, do yourself a favor and make sure it has these module dependencies.
-Also, create an app.js while you're at it.
+When your `package.json` arrives, do yourself a favor and make sure it has these module dependencies.
+
+Also, create an `app.js` while you're at it.
 
 ```bash
-$ npm install express socket.io mongoose express-handlebars --s
+$ npm install express mongoose express-handlebars --s
 $ touch app.js
 ```
 
-Here's what your app.js should look like.
+Here's what your `app.js` should look like.
 
 ```javascript
 //App.js
@@ -42,9 +43,8 @@ server.listen('3000', () => {
 })
 ```
 
-If this code makes no sense, I recommend this [tutorial](https://www.makeschool.com/online-courses/tutorials/giphy-search-app-with-node-js/your-node-environment).
-
 # Add in the views
+
 If you tried running the server, you'll notice you haven't yet created index.handlebars.
 Let's do that.
 
@@ -70,6 +70,5 @@ $ cd ..
 ```
 
 # Looking Pretty Good!
-Time to put on your big kid gear, because you're now about to make your first socket.io connection!
 
-![Socket Connection](assets/socket.gif)
+Time to put on your big kid gear, because you're now about to make your first websocket connection!
