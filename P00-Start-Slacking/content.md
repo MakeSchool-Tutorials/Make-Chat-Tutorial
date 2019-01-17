@@ -26,7 +26,7 @@ To gain familiarity with these topics, you can complete the following tutorials 
 
 # HTML5 Bidirectional Communication => WebSocket
 
-Before we jump into building with websockets, lets take a second to look at where the WebSocket standard came from and it works. Much of this complexity is buried into the libraries and tools we use, so lets take a minute to look at them.
+Before we jump into building with websockets, lets take a second to look at where the WebSocket standard came from and how it works. Much of this complexity is buried into the libraries and tools we use, so lets take a minute to look at them.
 
 As HTML5 was being developed, it became clear that the web needed a bidirectional **full-duplex** standard to allow for bidirectional communication. A new standard called WebSocket was recommended in June of 2008 by Michael Carter—an influential HTML5 game developer.
 
@@ -50,6 +50,7 @@ Origin: http://example.com
 ```
 
 Server response:
+
 ```
 HTTP/1.1 101 Switching Protocols
 Upgrade: websocket

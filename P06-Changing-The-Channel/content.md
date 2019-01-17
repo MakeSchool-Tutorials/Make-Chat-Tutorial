@@ -3,9 +3,7 @@ title: "Creating Channels"
 slug: change-the-channel
 ---
 
-Wow you made it this far. I hope you've been taking breaks because this next part is a bit much.
-
-So currently all messages are in one chat room, but if we want to be like Slack or Discord we need there to be many channels. We're going to use Socket.io's built in `rooms` functionality to implement these channels.
+So currently all messages are in one chat room, but if we want to be like Slack or Discord we need there to be many channels. We're going to use Socket.io's built in [rooms](https://socket.io/docs/rooms-and-namespaces/#Rooms) functionality to implement these channels.
 
 We're now going to create different "channels" for users to create or join. Let's add some functionality to the channel creator on the client. Each channel will be a sub-chatroom that is logged as belonging to a parent socket connection.
 
@@ -13,11 +11,15 @@ We're now going to create different "channels" for users to create or join. Let'
 
 So we are going to make a form with a `#newChannelBtn` and make it generate a new channel.
 
+>[action]
+> Create a `newChannelBtn` handler near your other button handlers in `/public/index.js`:
+>
 ```js
-//index.js
+...
+>
 $('#newChannelBtn').click( () => {
   let newChannel = $('#newChannelInput').val();
-
+>
   if(newChannel.length > 0){
     // Emit the new channel to the server
     socket.emit('new channel', newChannel);
@@ -28,39 +30,50 @@ $('#newChannelBtn').click( () => {
 
 Over on the server, make sure the event is registered:
 
+>[action]
+> Register the event in `/sockets/chat.js`:
+>
 ```js
-// chat.js
-
+...
+>
   socket.on('new channel', (newChannel) => {
     console.log(newChannel);
   })
 ```
 
-Test that that works before going forward. Baby steps, baby steps.
+Test that your `newChannel` console log is showing before going forward. Baby steps, baby steps.
 
 # Persisting Channels
 
 Just like the users, we're going to want to save each channel locally so that they persist across new clients.
 
+> add `channels` to your `socket.io` code in `app.js`:
+>
 ```javascript
 //app.js
+...
+>
 const io = require('socket.io')(server);
 let onlineUsers = {};
 //Save the channels in this object.
 let channels = {"General" : []}
-
+>
 io.on("connection", (socket) => {
   // Make sure to send the channels to our chat file
   require('./sockets/chat.js')(io, socket, onlineUsers, channels);
 })
+...
 ```
 
 Notice how we have the **General** channel already included in our object. We want this channel to be available without having to be created.
 
 The array value that comes with the channel key will be used to save each channel's messages.
 
-Let's now have our server be `on()` `"New Channel"`.
+Now let's have our server be `on()` for `"New Channel"`.
 
+>[action]
+> Update `/sockets/chat.js` to be on for `new channel`. Remember to update the `module.exports` line to include `channels`:
+>
 ```javascript
 //chat.js
 
@@ -85,24 +98,27 @@ module.exports = (io, socket, onlineUsers, channels) => {
 }
 ```
 
-## Go To Your Room!
+# Go To Your Room!
 
-Socket.io has this fancy thing called `rooms` in which different sockets(clients) can `.join()`.
+Socket.io has this fancy thing called `rooms` in which different `sockets(clients)` can `.join()`.
 
 In the code we just put in, we did `socket.join(newChannel)` which is telling the socket to join the new channel room.
 
-Rooms are great, because you can emit only to that room. You will see what I mean very soon.
+Rooms are great, because you can emit only to that room. You will see how that works very soon.
 
 Let's update the client to display all channels that exist and mark for each user which channel they are on (which Socket.io `room` they are in).
 
+>[action]
+> Update `/public/index.js` to be `on` for `new channel` and `user changed channel`:
+>
 ```javascript
-//index.js
-
+...
+>
 // Add the new channel to the channels list (Fires for all clients)
 socket.on('new channel', (newChannel) => {
   $('.channels').append(`<div class="channel">${newChannel}</div>`);
 });
-
+>
 // Make the channel joined the current channel. Then load the messages.
 // This only fires for the client who made the channel.
 socket.on('user changed channel', (data) => {
@@ -126,12 +142,18 @@ Fantastic! Go ahead and try making a new channel. You should see that you join i
 
 # That's not supposed to go there!
 
-Unfortunately, messages are currently being broadcasted to every client, regardless of which channel they came from. Let's fix that!
+Unfortunately, messages are currently being broadcasted to every client, regardless of which channel they came from. Try it out yourself to see.
 
-Let's go to the client message creation function.
+Let's fix that!
 
+Let's go to the client message creation function and make sure it only goes to the right channel.
+
+>[action]
+> Update `/public/index.js` the `sendChatBtn` click handler to involve channels:
+>
 ```javascript
-//index.js
+...
+>
 $('#sendChatBtn').click((e) => {
   e.preventDefault();
   // Get the client's channel
@@ -149,10 +171,14 @@ $('#sendChatBtn').click((e) => {
 });
 ```
 
-We should now update the `"new message"` listener on the server to pay attention to which user and channel the message was sent on.
+We should now update the `new message` listener on the server to pay attention to which user and channel the message was sent on.
 
+>[action]
+> Update the `new message` listener in `/sockets/chat.js` to pay attention to channels:
+>
 ```javascript
-//chat.js
+...
+>
 socket.on('new message', (data) => {
   //Save the new message to the channel.
   channels[data.channel].push({sender : data.sender, message : data.message});
@@ -161,10 +187,14 @@ socket.on('new message', (data) => {
 });
 ```
 
-And finally let's update the `"new message"` listener on the client to respect channel.
+And finally let's update the `new message` listener on the client to respect channel.
 
+>[action]
+> Update the `new message` listener in `/public/index.js` to pay attention to channels:
+>
 ```javascript
-//index.js
+...
+>
 socket.on('new message', (data) => {
   //Only append the message if the user is currently in that channel
   let currentChannel = $('.channel-current').text();
@@ -179,12 +209,17 @@ socket.on('new message', (data) => {
 })
 ```
 
-Great, now the messages will only go to their corresponding channels.
+Great, now the messages will only go to their corresponding channels. However, if you try sending a message, you won't see it!
+
+That's cause we haven't specified a default channel (General) for a user to join. Let's fix that now.
 
 # Changing Channels
 
 Let's let users change their channel by clicking on it.
 
+>[action]
+> Update the top of `/public/index.js` to have an `emit` to `user changed channel`, and a click handler to allow for them to change a channel by clicking on it:
+>
 ```javascript
 //index.js
 const socket = io.connect();
@@ -192,7 +227,7 @@ let currentUser;
 socket.emit('get online users');
 //Each user should be in the general channel by default.
 socket.emit('user changed channel', "General");
-
+>
 //Users can change the channel by clicking on its name.
 $(document).on('click', '.channel', (e)=>{
   let newChannel = e.target.textContent;
@@ -200,11 +235,14 @@ $(document).on('click', '.channel', (e)=>{
 });
 ```
 
-Let's add a server socket listener for `"user changed channel"`
+Finally, Let's add a server socket listener for `user changed channel`
 
+>[action]
+> Include a server socket listener for `user changed channel` in `/sockets/chat.js`:
+>
 ```javascript
-//chat.js
-
+...
+>
 //Have the socket join the room of the channel
 socket.on('user changed channel', (newChannel) => {
   socket.join(newChannel);
@@ -215,7 +253,7 @@ socket.on('user changed channel', (newChannel) => {
 })
 ```
 
-Check out your application. Everything should now be working as it should!
+Check out your application. Everything should now be working as it should! Great work!
 
 # What now??
 
@@ -223,11 +261,13 @@ Well I have to say, I'm very proud of you for completing this tutorial!
 
 Some future enhancements you could do
 
+>[challenge]
+>
 1. Implementing a private message system.
 1. Using Socket.io's "channels" for multiple make chat teams to exist
 1. Using Socket.io's "rooms" to make themed chat rooms inside a channel, like "general" and "random"
 1. Dropping the client into an Electron app to make a desktop app.
 1. Adding a Team and a User resource and persisting teams and authenticating users.
-1. Great article on Socket.io's strengths and weaknesses: https://dzone.com/articles/socketio-the-good-the-bad-and-the-ugly
+1. Great article on [Socket.io's strengths and weaknesses](https://dzone.com/articles/socketio-the-good-the-bad-and-the-ugly)
 
 You have all the tools at your disposal to add these enhancements, I believe in you!

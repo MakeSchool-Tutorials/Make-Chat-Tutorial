@@ -13,6 +13,9 @@ Remember we want it to look roughly like this wireframe:
 
 I'll give you the new handlebars and CSS so you can fast forward a bit on the styling.
 
+>[action]
+> Update your `/views/index.handleabars` to the following:
+>
 ```html
 <!--index.handlebars-->
 <!DOCTYPE html>
@@ -27,12 +30,12 @@ I'll give you the new handlebars and CSS so you can fast forward a bit on the st
     <link href='/public/index.css' rel='stylesheet' type='text/css'></link>
   </head>
   <body>
-
+>
     <form class="usernameForm">
       <input id="usernameInput" placeholder="Username"></input>
       <button id="createUserBtn">Join Chat</button>
     </form>
-
+>
     <div class="mainContainer">
       <div class="channelsAndUsersOnlineContainer">
         <h1 class="brand">Make Chat</h1>
@@ -54,18 +57,18 @@ I'll give you the new handlebars and CSS so you can fast forward a bit on the st
         </div>
       </div>
     </div>
-
+>
   </body>
 </html>
 ```
-
-**index.css**
-
+>
+> Update `/public/index.css` to the following:
+>
 ```css
 *{
   font-family: helvetica;
 }
-
+>
 .usernameForm{
   display: flex;
   width : 50%;
@@ -76,21 +79,21 @@ I'll give you the new handlebars and CSS so you can fast forward a bit on the st
   justify-content: center;
   align-items: center;
 }
-
+>
 #usernameInput{
   font-size: 20px;
   padding: 5px;
   margin-bottom: 5px;
-  width : 100%:
+  width : 100%;
 }
-
+>
 #createUserBtn{
   width : 45%;
   font-size: 20px;
   font-weight: bold;
   padding: 5px;
 }
-
+>
 .channels {
   display: flex;
   flex : 6;
@@ -99,7 +102,7 @@ I'll give you the new handlebars and CSS so you can fast forward a bit on the st
   overflow-y: auto;
   width: 100%;
 }
-
+>
 .newChannelForm{
   display: flex;
   margin-top: -10px;
@@ -107,28 +110,28 @@ I'll give you the new handlebars and CSS so you can fast forward a bit on the st
   margin-left: 8px;
   margin-right: 8px;
 }
-
+>
 #newChannelInput{
   font-size: 14px;
   width : 70%;
 }
-
+>
 #newChannelBtn{
   font-size: 14px;
   width: 30%;
 }
-
+>
 .channel{
   font-size: 18px;
   padding : 10px 0px;
   margin : 2px 0px;
   cursor : pointer;
 }
-
+>
 .channel:hover{
   color : grey;
 }
-
+>
 .channel-current{
   font-weight: bold;
   font-size: 18px;
@@ -136,29 +139,28 @@ I'll give you the new handlebars and CSS so you can fast forward a bit on the st
   margin : 2px 0px;
   background-color: #4f9689;
 }
-
+>
 .brand{
   margin-left: 8px;
 }
-
+>
 .channelsLabel{
   margin-left: 8px;
 }
-
-
+>
 .chatContainer {
   width : 80%;
   display: flex;
   flex-direction: column;
   background-color: white;
 }
-
+>
 .chatContainerFluid{
   margin : 8px;
   display: flex;
   flex-direction: column;
 }
-
+>
 .channelsAndUsersOnlineContainer{
   width : 20%;
   margin-left : -8px;
@@ -170,7 +172,7 @@ I'll give you the new handlebars and CSS so you can fast forward a bit on the st
   background-color: #4d394b;
   color : white;
 }
-
+>
 .usersOnline{
   margin-left: 8px;
   display: flex;
@@ -180,57 +182,58 @@ I'll give you the new handlebars and CSS so you can fast forward a bit on the st
   overflow-y: auto;
   flex : 4;
 }
-
+>
 .userOnline{
   margin-bottom: 8px;
   font-size: 18px;
 }
-
+>
 .textChatDivide{
   border : 0.5px solid green;
   margin-bottom: 10px;
 }
-
+>
 .chatBox {
   display: flex;
   justify-content: center;
   width : 100%;
 }
-
+>
 label {
   display: block;
 }
-
+>
 #chatInput {
   width : 100%;
   display: inline;
 }
-
+>
 #sendChatBtn{
   width : 10%;
   display: inline;
 }
-
+>
 .messageContainer{
   display: flex;
   margin-bottom: 10px;
   padding-bottom: 10px;
   flex-direction: column;
 }
-
+>
 .message{
   margin-bottom: 5px;
 }
-
+>
 .messageUser{
   display: inline;
   color : red;
   font-weight: bold;
 }
+>
 .messageText{
   display: inline;
 }
-
+>
 .mainContainer{
   display: none;
   flex-direction: row;
@@ -242,13 +245,14 @@ label {
 
 Let's update your `index.js` so it doesn't just log when someone joins the chat, but instead it displays their names in the "Online Users" section.
 
-Replace all your code in `public/index.js` with this code. Notice the line that uses the `.append()` function to append a new online user:
-
+>[action]
+> Replace all your code in `public/index.js` with the following code. Notice the line that uses the `.append()` function to append a new online user:
+>
 ```javascript
 //index.js
 $(document).ready(()=>{
   const socket = io.connect();
-
+>
   $('#createUserBtn').click((e)=>{
     e.preventDefault();
     if($('#usernameInput').val().length > 0){
@@ -258,14 +262,14 @@ $(document).ready(()=>{
       $('.mainContainer').css('display', 'flex');
     }
   });
-
+>
   //socket listeners
   socket.on('new user', (username) => {
     console.log(`${username} has joined the chat`);
     // Add the new user to the online users div
     $('.usersOnline').append(`<div class="userOnline">${username}</div>`);
   })
-
+>
 })
 ```
 
@@ -277,14 +281,17 @@ Look at the nice text area we have for sending messages. If only it worked...
 
 We need to wire up the `#sendChatBtn` to **emit** a `new message` event to the server, and have the server **emit** a `new message` event to all connected clients.
 
+> [action]
+> Update `/public/index.js` to the following code. Read the comments to help understand what each event is doing:
+>
 ```javascript
 //index.js
 $(document).ready(()=>{
   const socket = io.connect();
-
+>
   //Keep track of the current user
   let currentUser;
-
+>
   $('#createUserBtn').click((e)=>{
     e.preventDefault();
     if($('#usernameInput').val().length > 0){
@@ -295,7 +302,7 @@ $(document).ready(()=>{
       $('.mainContainer').css('display', 'flex');
     }
   });
-
+>
   $('#sendChatBtn').click((e) => {
     e.preventDefault();
     // Get the message text value
@@ -310,40 +317,43 @@ $(document).ready(()=>{
       $('#chatInput').val("");
     }
   });
-
+>
   //socket listeners
   socket.on('new user', (username) => {
     console.log(`${username} has joined the chat`);
     $('.usersOnline').append(`<div class="userOnline">${username}</div>`);
   })
-
+>
 })
 ```
 
 A few things were added here. We are now saving the client's username to the `currentUser` variable.
 
-We then make sure our send chat button **emits** `"new message"` to our server. As shown, you can emit multiple pieces of data.
+We then make sure our send chat button **emits** `new message` to our server. As shown, you can emit multiple pieces of data.
 
 In this case we are emitting `sender` and `message`.
 
 Let's now create the `"new message"` listener on our server.
 
+>[action]
+> Update `/sockets/chat.js` to the following:
+>
 ```javascript
 //chat.js
 module.exports = (io, socket) => {
-
+>
   socket.on('new user', (username) => {
     console.log(`✋ ${username} has joined the chat! ✋`);
     io.emit("new user", username);
   })
-
+>
   //Listen for new messages
   socket.on('new message', (data) => {
     // Send that data back to ALL clients
     console.log(`🎤 ${data.sender}: ${data.message} 🎤`)
     io.emit('new message', data);
   })
-
+>
 }
 ```
 
@@ -351,15 +361,12 @@ Simple enough. Notice how we can access the `data` sent like an object.
 
 Finally we should update the client to listen for any `new message` events from the server, and when they come, append those new messages to the DOM for the user to see.
 
+>[action]
+> Add a `socket.on('new message')` listener to `/public/index,js`:
+>
 ```javascript
-//index.js
-
-//socket listeners
-socket.on('new user', (username) => {
-  console.log(`${username} has joined the chat`);
-  $('.usersOnline').append(`<div class="userOnline">${username}</div>`);
-})
-
+...
+>
 //Output the new message
 socket.on('new message', (data) => {
   $('.messageContainer').append(`
@@ -371,7 +378,7 @@ socket.on('new message', (data) => {
 })
 ```
 
-Wow, what a lot of work. See if the page updates for each message.
+Wow, what a lot of work. Reload your pages and see if the page updates for each message.
 
 # Great, we have users and chat! We're finished right?
 

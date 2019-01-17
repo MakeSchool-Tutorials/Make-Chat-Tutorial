@@ -9,49 +9,52 @@ Let's just jump right in and get Socket.io working.
 
 Let's import socket.io in our `app.js`, and then open a connection and log that the connection opened.
 
+>[action]
+> Replace your current `app.js` code with the following:
+>
 ```js
 //app.js
 const express = require('express');
 const app = express();
 const server = require('http').Server(app);
-
+>
 //Socket.io
 const io = require('socket.io')(server);
 io.on("connection", (socket) => {
   console.log("🔌 New user connected! 🔌");
 })
-
+>
 const exphbs  = require('express-handlebars');
 app.engine('handlebars', exphbs());
 app.set('view engine', 'handlebars');
-
+>
 app.get('/', (req, res) => {
   res.render('index.handlebars');
 })
-
+>
 server.listen('3000', () => {
   console.log('Server listening on Port 3000');
 })
 ```
 
-You have now successfully set up your backend for incoming socket connections.
-Open up your browser to http://localhost:3000/ to see the server log message *"New user connected!"*
+You have now successfully set up your backend for incoming socket connections!
 
 # Take it to the Front End
 
 Remember that we use Socket.io on both the server and client, so let's update our front end accordingly.
 
-Create your very own public folder with an index.js.
-
+>[action]
+> Create your `/public` folder with an `index.js`.
+>
 ```bash
 $ mkdir public
 $ cd public
 $ touch index.js
 $ cd ..
 ```
-
-Make sure your app.js is using the public folder.
-
+>
+>Make sure your `app.js` is using the public folder.
+>
 ```js
 //app.js
 //Express View Engine for Handlebars
@@ -62,8 +65,11 @@ app.set('view engine', 'handlebars');
 app.use('/public', express.static('public'))
 ```
 
-The socket.io npm module automatically sets up a `/socket.io/socket.io.js` path in your project to the socket.io front end JavaScript. So we can update our handlebars to require the client-side socket.io script.
+The `socket.io` npm module automatically sets up a `/socket.io/socket.io.js` path in your project to the `socket.io` frontend JavaScript. So we can update our handlebars to require the client-side socket.io script.
 
+>[action]
+> Update your `/views/index.handlebars` file to the following:
+>
 ```html
 <!DOCTYPE html>
 <html>
@@ -80,10 +86,11 @@ The socket.io npm module automatically sets up a `/socket.io/socket.io.js` path 
 </html>
 ```
 
-As you notice, we're also including jQuery to make the DOM manipulation a little easier. Feel free not to include it and use your vanilla js powers you've learned in other tutorials.
+You may notice we're also including `jQuery` to make the DOM manipulation a little easier. Feel free not to include it and use your vanilla `js` powers you've learned in other tutorials. For this tutorial though, we'll be using `jQuery`.
 
-Finally add this code to `index.js`
-
+>[action]
+>Finally add this code to `index.js`
+>
 ```js
 $(document).ready( () => {
   //Connect to the socket.io server
@@ -91,7 +98,7 @@ $(document).ready( () => {
 })
 ```
 
-Your app is now ready for realtime communications. Reload http://localhost:3000/ and check your server logs.
+Your app is now ready for realtime communications. Reload [http://localhost:3000/](http://localhost:3000/) and check your server logs on your terminal. You should seed the below logs:
 
 ![Socket Connection](assets/log.png)
 
@@ -99,9 +106,9 @@ Your app is now ready for realtime communications. Reload http://localhost:3000/
 
 Good question.
 
-Currently, your app.js is listening for any incoming socket connections from the client.
+Currently, your `app.js` is listening for any incoming socket connections from the client.
 
-The *io.on("connection")* is a special listener that fires whenever a new client connects. So, for example, in a chat room application, you could message everyone that a new user joined the chat room when this event fires.
+The `io.on("connection")` is a special listener that fires whenever a new client connects. So, for example, in a chat room application, you could message everyone that a new user joined the chat room when this event fires.
 
 ```js
 // app.js
