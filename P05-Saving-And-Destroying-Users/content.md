@@ -12,7 +12,7 @@ We'll save everything locally, meaning that all of our data will be cleared on a
 Let's start with updating our `app.js` to save the object `onlineUsers`.
 
 >[action]
-> Update the `sockt.io` code in `app.js` to the following:
+> Update the `socket.io` code in `app.js` to the following:
 >
 ```javascript
 const io = require('socket.io')(server);
@@ -40,7 +40,7 @@ In the meantime, let's update `chat.js` to save those `onlineUsers`.
 ```javascript
 //chat.js
 module.exports = (io, socket, onlineUsers) => {
-
+>
   socket.on('new user', (username) => {
     //Save the username as key to access the user's socket id
     onlineUsers[username] = socket.id;
@@ -49,12 +49,12 @@ module.exports = (io, socket, onlineUsers) => {
     console.log(`✋ ${username} has joined the chat! ✋`);
     io.emit("new user", username);
   })
-
+>
   socket.on('new message', (data) => {
     console.log(`🎤 ${data.sender}: ${data.message} 🎤`)
     io.emit('new message', data);
   })
-
+>
 }
 ```
 

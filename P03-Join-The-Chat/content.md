@@ -19,6 +19,7 @@ Update `app.js` to require the new file. We're going to pass the socket server (
 
 >[action]
 > Update the body of `io.on(...)` in `app.js` to the following:
+>
 ```javascript
 //app.js
 const io = require('socket.io')(server);

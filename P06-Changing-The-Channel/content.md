@@ -55,6 +55,7 @@ $ git push
 
 Just like the users, we're going to want to save each channel locally so that they persist across new clients.
 
+>[action]
 > add `channels` to your `socket.io` code in `app.js`:
 >
 ```javascript
@@ -84,12 +85,12 @@ Now let's have our server be `on()` for `"New Channel"`.
 >
 ```javascript
 //chat.js
-
+>
 //Make sure to add channels to module.exports parameters
 module.exports = (io, socket, onlineUsers, channels) => {
-
+>
   ...
-
+>
   socket.on('new channel', (newChannel) => {
     //Save the new channel to our channels object. The array will hold the messages.
     channels[newChannel] = [];
