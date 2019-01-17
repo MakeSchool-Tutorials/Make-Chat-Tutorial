@@ -288,6 +288,10 @@ $ git commit -m 'Implemented changing channels'
 $ git push
 ```
 
+# Feedback and Review
+
+Please take a moment to rate your understanding of learning outcomes from this tutorial, and how we can improve it via our [tutorial feedback form](https://goo.gl/forms/L3i5ZhY58AOGtyqI3)
+
 # What now??
 
 Well I have to say, I'm very proud of you for completing this tutorial!
