@@ -9,6 +9,16 @@ This live messaging app, along with its little brother Discord, rely heavily on 
 
 In this tutorial we're going to be building our very own live messaging application.
 
+# Learning Outcomes
+
+By the end of this tutorial, you should be able to...
+
+1. Understand how WebSockets work within a server/client relationship through socket.io
+1. Pass information back and forth from the client and server using the power of bidirectional communication in sockets
+1. Use sockets to update information on the server
+1. Use sockets to update information on the client
+1. Understand how jQuery can help send info through sockets
+
 # What You'll Need to Know
 
 To begin this tutorial you should already have familiarity with the following domains and tools:
