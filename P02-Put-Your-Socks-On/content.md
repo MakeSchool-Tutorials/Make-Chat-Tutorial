@@ -102,6 +102,14 @@ Your app is now ready for realtime communications. Reload [http://localhost:3000
 
 ![Socket Connection](assets/log.png)
 
+# Now Commit
+
+```bash
+$ git add .
+$ git commit -m 'Integrated Socket.io'
+$ git push
+```
+
 # Great, but what happened?
 
 Good question.

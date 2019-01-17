@@ -79,6 +79,27 @@ $ cd ..
 </html>
 ```
 
+# Set up Git/GitHub
+
+>[action]
+> Make your first commit
+>
+```bash
+$ git init
+$ git add .
+$ git commit -m 'project init'
+```
+
+Now go to GitHub and create a public repository called `Make-Chat`, and now associate it as a remote for your local git project and then push to it.
+
+>[action]
+> Push it!
+>
+```bash
+$ git remote add origin GITHUB-REPO-URL
+$ git push origin master -u
+```
+
 # Looking Pretty Good!
 
 Time to put on your big kid gear, because you're now about to make your first websocket connection!

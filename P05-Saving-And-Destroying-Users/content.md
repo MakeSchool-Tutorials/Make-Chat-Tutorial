@@ -144,6 +144,14 @@ socket.on('user has left', (onlineUsers) => {
 
 Open up multiple browser windows and test joining and leaving the chat.
 
+# Now Commit
+
+```bash
+$ git add .
+$ git commit -m 'Users can join and leave chats'
+$ git push
+```
+
 # Stretch Challenge: Logout
 >[challenge]
 > Can you create a "log out" button, that breaks your connection, removes you from `onlineUsers`, and redirects you back to the seeing the login form?

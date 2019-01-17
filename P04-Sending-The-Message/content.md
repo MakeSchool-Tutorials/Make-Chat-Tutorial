@@ -241,6 +241,16 @@ label {
 }
 ```
 
+Whew, that's a lot of boilerplate code, let's commit this now before we continue:
+
+# Now Commit
+
+```bash
+$ git add .
+$ git commit -m 'Added styling for make chat'
+$ git push
+```
+
 # Display Online Users
 
 Let's update your `index.js` so it doesn't just log when someone joins the chat, but instead it displays their names in the "Online Users" section.
@@ -379,6 +389,14 @@ socket.on('new message', (data) => {
 ```
 
 Wow, what a lot of work. Reload your pages and see if the page updates for each message.
+
+# Now Commit
+
+```bash
+$ git add .
+$ git commit -m 'Users can join chat and send messages'
+$ git push
+```
 
 # Great, we have users and chat! We're finished right?
 

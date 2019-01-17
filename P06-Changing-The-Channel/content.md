@@ -43,6 +43,14 @@ Over on the server, make sure the event is registered:
 
 Test that your `newChannel` console log is showing before going forward. Baby steps, baby steps.
 
+# Now Commit
+
+```bash
+$ git add .
+$ git commit -m 'Initial new channel'
+$ git push
+```
+
 # Persisting Channels
 
 Just like the users, we're going to want to save each channel locally so that they persist across new clients.
@@ -140,6 +148,14 @@ socket.on('user changed channel', (data) => {
 
 Fantastic! Go ahead and try making a new channel. You should see that you join it automatically, and that the new channel is created for all clients.
 
+# Now Commit
+
+```bash
+$ git add .
+$ git commit -m 'Users can create new channels and join'
+$ git push
+```
+
 # That's not supposed to go there!
 
 Unfortunately, messages are currently being broadcasted to every client, regardless of which channel they came from. Try it out yourself to see.
@@ -209,6 +225,14 @@ socket.on('new message', (data) => {
 })
 ```
 
+# Now Commit
+
+```bash
+$ git add .
+$ git commit -m 'Messages go to correct channel'
+$ git push
+```
+
 Great, now the messages will only go to their corresponding channels. However, if you try sending a message, you won't see it!
 
 That's cause we haven't specified a default channel (General) for a user to join. Let's fix that now.
@@ -254,6 +278,14 @@ socket.on('user changed channel', (newChannel) => {
 ```
 
 Check out your application. Everything should now be working as it should! Great work!
+
+# Now Commit
+
+```bash
+$ git add .
+$ git commit -m 'Implemented changing channels'
+$ git push
+```
 
 # What now??
 

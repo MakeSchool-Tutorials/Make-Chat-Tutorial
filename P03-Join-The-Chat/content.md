@@ -217,9 +217,17 @@ $(document).ready(() => {
 })
 ```
 
-Now both your server and clients will be logging out the new users.
+Now both your server and clients will be logging in the new users.
 
 To simulate two connections, open up two browser windows and direct them both to [http://localhost:3000/](http://localhost:3000/), create different users on each, and check both browser window's JavaScript consoles.
+
+# Now Commit
+
+```bash
+$ git add .
+$ git commit -m 'Users can log in'
+$ git push
+```
 
 ## Wow, that's cool!
 
