@@ -85,7 +85,7 @@ socket.on('get online users', () => {
 Finally go back to your client, to show the users on the page.
 
 >[action]
-> Update `/views/index.js` to include a `get online users` socket listener:
+> Update `/public/index.js` to include a `get online users` socket listener:
 >
 ```javascript
 ...
