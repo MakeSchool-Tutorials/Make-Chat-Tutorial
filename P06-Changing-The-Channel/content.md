@@ -247,17 +247,20 @@ Let's let users change their channel by clicking on it.
 >
 ```javascript
 //index.js
-const socket = io.connect();
-let currentUser;
-socket.emit('get online users');
-//Each user should be in the general channel by default.
-socket.emit('user changed channel', "General");
+$(document).ready(() => {
 >
-//Users can change the channel by clicking on its name.
-$(document).on('click', '.channel', (e)=>{
-  let newChannel = e.target.textContent;
-  socket.emit('user changed channel', newChannel);
-});
+  const socket = io.connect();
+  let currentUser;
+  socket.emit('get online users');
+  //Each user should be in the general channel by default.
+  socket.emit('user changed channel', "General");
+>
+  //Users can change the channel by clicking on its name.
+  $(document).on('click', '.channel', (e)=>{
+    let newChannel = e.target.textContent;
+    socket.emit('user changed channel', newChannel);
+  });
+...
 ```
 
 Finally, Let's add a server socket listener for `user changed channel`
@@ -275,7 +278,7 @@ socket.on('user changed channel', (newChannel) => {
     channel : newChannel,
     messages : channels[newChannel]
   });
-})
+...
 ```
 
 Check out your application. Everything should now be working as it should! Great work!
