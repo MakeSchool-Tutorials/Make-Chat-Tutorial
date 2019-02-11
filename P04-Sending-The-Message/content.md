@@ -241,7 +241,9 @@ label {
 }
 ```
 
-Whew, that's a lot of boilerplate code, let's commit this now before we continue:
+Whew, that's a lot of boilerplate code. You may notice though that if you reload your browser, none of the styling appears. This is because if you check the last item in `/public/index.css`, you'll notice we _set the `display` of `.mainContainer` to `none`._ In the next section, we'll use jQuery to update the `display` to `flex`, and then you'll get to see your beautiful new app!
+
+Before we go any further, let's commit what we have now:
 
 # Now Commit
 
