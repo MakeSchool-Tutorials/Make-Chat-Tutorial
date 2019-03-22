@@ -260,6 +260,10 @@ $(document).ready(() => {
     let newChannel = e.target.textContent;
     socket.emit('user changed channel', newChannel);
   });
+>
+...
+>
+});
 ...
 ```
 
@@ -278,10 +282,15 @@ socket.on('user changed channel', (newChannel) => {
     channel : newChannel,
     messages : channels[newChannel]
   });
+>
 ...
+>
+})
 ```
 
 Check out your application. Everything should now be working as it should! Great work!
+
+As you go through this BEW course, see if you can relate what you learned in this tutorial to the lessons in class!
 
 # Now Commit
 
@@ -291,13 +300,13 @@ $ git commit -m 'Implemented changing channels'
 $ git push
 ```
 
-# Feedback and Review
+# Feedback and Review - 2 minutes
+
+**We promise this won't take longer than 2 minutes!**
 
 Please take a moment to rate your understanding of learning outcomes from this tutorial, and how we can improve it via our [tutorial feedback form](https://goo.gl/forms/L3i5ZhY58AOGtyqI3)
 
-# What now??
-
-Well I have to say, I'm very proud of you for completing this tutorial!
+# Stretch Challenges
 
 Some future enhancements you could do
 
@@ -310,4 +319,4 @@ Some future enhancements you could do
 1. Adding a Team and a User resource and persisting teams and authenticating users.
 1. Great article on [Socket.io's strengths and weaknesses](https://dzone.com/articles/socketio-the-good-the-bad-and-the-ugly)
 
-You have all the tools at your disposal to add these enhancements, I believe in you!
+You have all the tools at your disposal to add these enhancements, we believe in you!

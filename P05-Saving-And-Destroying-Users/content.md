@@ -153,5 +153,6 @@ $ git push
 ```
 
 # Stretch Challenge: Logout
+
 >[challenge]
 > Can you create a "log out" button, that breaks your connection, removes you from `onlineUsers`, and redirects you back to the seeing the login form?

@@ -9,6 +9,10 @@ This live messaging app, along with its little brother Discord, rely heavily on 
 
 In this tutorial we're going to be building our very own live messaging application.
 
+# Why is this important?
+
+Clients and servers pass information back and forth constantly, and are a huge part of any communication for a web app. Sockets are how the clients and servers talk to each other, so it's important to know how the bidirectional communication process works in order to build out any web app that utilizes a server.
+
 # Learning Outcomes
 
 By the end of this tutorial, you should be able to...
@@ -44,7 +48,7 @@ In February 2010, Google (being a champion of HTML5) made Chrome 4 the first bro
 
 The WebSocket standard begins with an HTTP handshake, but then switches to the WebSocket standard that does not conform to the HTTP protocol.
 
-![WebSocket Diagram](WebSockets-Diagram.png)
+![WebSocket Diagram](assets/01_html5-bidirectional_WebSockets-Diagram.png)
 
 Here's an example of how the request for the handshake and the server's response looks:
 
@@ -87,7 +91,7 @@ For more information read this [WebSocket documentation](https://hpbn.co/websock
 
 Let's look at a simple wireframe of what we want to build. Basically it is a chat application with very little underutilized space.
 
-![Wireframe](make-chat-wireframe.png)
+![Wireframe](assets/02_wireframe_make-chat-wireframe.png)
 
 # This sounds impossible...
 

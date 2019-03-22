@@ -9,7 +9,7 @@ Now that our server and client are ready for new users, lets update the look of 
 
 Remember we want it to look roughly like this wireframe:
 
-![wireframe](make-chat-wireframe.png)
+![wireframe](assets/01_make-it-look_wireframe.png)
 
 I'll give you the new handlebars and CSS so you can fast forward a bit on the styling.
 

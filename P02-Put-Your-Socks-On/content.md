@@ -100,7 +100,7 @@ $(document).ready( () => {
 
 Your app is now ready for realtime communications. Reload [http://localhost:3000/](http://localhost:3000/) and check your server logs on your terminal. You should seed the below logs:
 
-![Socket Connection](assets/log.png)
+![Socket Connection](assets/01_take-it-to_log.png)
 
 # Now Commit
 
