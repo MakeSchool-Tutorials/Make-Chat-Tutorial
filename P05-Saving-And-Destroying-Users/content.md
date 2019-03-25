@@ -3,6 +3,16 @@ title: "Saving and Destroying Users"
 slug: saving-and-destroying-users
 ---
 
+1. ~~Build out a basic view~~
+1. ~~Integrate sockets~~
+1. ~~Implement user form~~
+1. ~~Style and send messages~~
+1. **Connect/disconnect users**
+    1. **Save the `onlineUsers` object**
+    1. **Display the online users**
+    1. **Remove users when they leave the app**
+1. Create/persist/join channels
+
 Don't worry we're not building a database for this application.
 
 We'll save everything locally, meaning that all of our data will be cleared on a server restart.

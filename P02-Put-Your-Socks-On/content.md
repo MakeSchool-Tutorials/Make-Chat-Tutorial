@@ -3,6 +3,16 @@ title: "Connection Inspection"
 slug: put-your-socks-on
 ---
 
+1. ~~Build out a basic view~~
+1. **Integrate sockets**
+    1. **Import socket.io and open a connection on the server side**
+    1. **Update the front end (client) to accept connections as well**
+    1. **Open up real time communication**
+1. Implement user form
+1. Style and send messages
+1. Connect/disconnect users
+1. Create/persist/join channels
+
 Let's just jump right in and get Socket.io working.
 
 # Set up the Connection

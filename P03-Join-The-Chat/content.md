@@ -3,6 +3,17 @@ title: "Give Users an Identity"
 slug: join-the-chat
 ---
 
+1. ~~Build out a basic view~~
+1. ~~Integrate sockets~~
+1. **Implement user form**
+    1. **Pass the socket server and the socket itself**
+    1. **Build out the structure of the user form**
+    1. **Send info from the client to the server using the user form**
+    1. **Send info from the server to all clients**
+1. Style and send messages
+1. Connect/disconnect users
+1. Create/persist/join channels
+
 ## Zen and the Art of Socket Maintenance
 
 Before we move on to our next feature, let's make a separate file for our socket listeners. This will reduce the socket clutter in our `app.js`

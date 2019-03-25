@@ -3,6 +3,16 @@ title: "Start Chatting"
 slug: sending-the-message
 ---
 
+1. ~~Build out a basic view~~
+1. ~~Integrate sockets~~
+1. ~~Implement user form~~
+1. **Style and send messages**
+    1. **Implement the styles for the app**
+    1. **Send messages using sockets**
+    1. **Listen for messages using sockets**
+1. Connect/disconnect users
+1. Create/persist/join channels
+
 ## Make It Look Like Slack
 
 Now that our server and client are ready for new users, lets update the look of our website.

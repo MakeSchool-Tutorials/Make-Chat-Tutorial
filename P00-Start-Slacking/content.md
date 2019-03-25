@@ -23,6 +23,17 @@ By the end of this tutorial, you should be able to...
 1. Use sockets to update information on the client
 1. Understand how jQuery can help send info through sockets
 
+# Technical Planning
+
+Here's what we'll need to do in order to build our Slack clone:
+
+1. Build out a basic view
+1. Integrate sockets
+1. Implement user form
+1. Style and send messages
+1. Connect/disconnect users
+1. Create/persist/join channels
+
 # What You'll Need to Know
 
 To begin this tutorial you should already have familiarity with the following domains and tools:

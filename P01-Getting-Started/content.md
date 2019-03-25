@@ -3,6 +3,15 @@ title: "I'm Ready to Get Started"
 slug: get-it-together
 ---
 
+1. **Build out a basic view**
+    1. **Install/integrate dependencies**
+    1. **Implement a basic, index view**
+1. Integrate sockets
+1. Implement user form
+1. Style and send messages
+1. Connect/disconnect users
+1. Create/persist/join channels
+
 You know the drill by now. But in case you've forgotten the Node essentials...
 
 >[action]

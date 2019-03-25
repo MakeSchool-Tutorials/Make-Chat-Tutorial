@@ -3,6 +3,18 @@ title: "Creating Channels"
 slug: change-the-channel
 ---
 
+1. ~~Build out a basic view~~
+1. ~~Integrate sockets~~
+1. ~~Implement user form~~
+1. ~~Style and send messages~~
+1. ~~Connect/disconnect users~~
+1. **Create/persist/join channels**
+    1. **Create a button to generate a new channel**
+    1. **Persist channels locally**
+    1. **Join other channels**
+    1. **Ensure messages go to their designated channels**
+    1. **Allow users to change channels**
+
 So currently all messages are in one chat room, but if we want to be like Slack or Discord we need there to be many channels. We're going to use Socket.io's built in [rooms](https://socket.io/docs/rooms-and-namespaces/#Rooms) functionality to implement these channels.
 
 We're now going to create different "channels" for users to create or join. Let's add some functionality to the channel creator on the client. Each channel will be a sub-chatroom that is logged as belonging to a parent socket connection.
