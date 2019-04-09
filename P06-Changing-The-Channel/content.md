@@ -312,12 +312,6 @@ $ git commit -m 'Implemented changing channels'
 $ git push
 ```
 
-# Feedback and Review - 2 minutes
-
-**We promise this won't take longer than 2 minutes!**
-
-Please take a moment to rate your understanding of learning outcomes from this tutorial, and how we can improve it via our [tutorial feedback form](https://goo.gl/forms/L3i5ZhY58AOGtyqI3)
-
 # Stretch Challenges
 
 Some future enhancements you could do
