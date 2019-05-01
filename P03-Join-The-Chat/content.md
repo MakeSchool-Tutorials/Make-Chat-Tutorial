@@ -70,9 +70,9 @@ Let's update our view to have a username form.
   </head>
   <body>
 >
-    <form class="usernameForm">
-      <input id="usernameInput" placeholder="Username"></input>
-      <button id="createUserBtn">Join Chat</button>
+    <form class="username-form">
+      <input id="username-input" placeholder="Username"></input>
+      <button id="create-user-btn">Join Chat</button>
     </form>
 >
   </body>
@@ -96,7 +96,7 @@ $ touch public/index.css
   font-family: helvetica;
 }
 >
-.usernameForm{
+.username-form{
   display: flex;
   width : 50%;
   margin-left: auto;
@@ -107,14 +107,14 @@ $ touch public/index.css
   align-items: center;
 }
 >
-#usernameInput{
+#username-input{
   font-size: 20px;
   padding: 5px;
   margin-bottom: 5px;
   width : 100%;
 }
 >
-#createUserBtn{
+#create-user-btn{
   width : 45%;
   font-size: 20px;
   font-weight: bold;
@@ -136,13 +136,13 @@ Let's add some client script to send the new username to the server. Notice that
 $(document).ready(()=>{
   const socket = io.connect();
 >
-  $('#createUserBtn').click((e)=>{
+  $('#create-user-btn').click((e)=>{
     e.preventDefault();
-    let username = $('#usernameInput').val();
+    let username = $('#username-input').val();
     if(username.length > 0){
       //Emit to the server the new user
       socket.emit('new user', username);
-      $('.usernameForm').remove();
+      $('.username-form').remove();
     }
   });
 >
@@ -211,13 +211,13 @@ $(document).ready(() => {
 >
   const socket = io.connect();
 >
-  $('#createUserBtn').click((e) => {
+  $('#create-user-btn').click((e) => {
     e.preventDefault();
-    let username = $('#usernameInput').val();
+    let username = $('#username-input').val();
     if(username.length > 0){
       //Emit to the server the new user
       socket.emit('new user', username);
-      $('.usernameForm').remove();
+      $('.username-form').remove();
     }
   });
 >

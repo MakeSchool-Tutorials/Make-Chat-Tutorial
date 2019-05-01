@@ -104,7 +104,7 @@ socket.on('get online users', (onlineUsers) => {
   //You may have not have seen this for loop before. It's syntax is for(key in obj)
   //Our usernames are keys in the object of onlineUsers.
   for(username in onlineUsers){
-    $('.usersOnline').append(`<div class="userOnline">${username}</div>`);
+    $('.users-online').append(`<div class="user-online">${username}</div>`);
   }
 })
 ```
@@ -143,9 +143,9 @@ Now update the client to **refresh its online users** when a *"user has left"*.
 >
 //Refresh the online user list
 socket.on('user has left', (onlineUsers) => {
-  $('.usersOnline').empty();
+  $('.users-online').empty();
   for(username in onlineUsers){
-    $('.usersOnline').append(`<p>${username}</p>`);
+    $('.users-online').append(`<p>${username}</p>`);
   }
 });
 ```

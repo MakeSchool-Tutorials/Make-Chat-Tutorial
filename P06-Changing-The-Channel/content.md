@@ -21,21 +21,21 @@ We're now going to create different "channels" for users to create or join. Let'
 
 # Channel Your Energy
 
-So we are going to make a form with a `#newChannelBtn` and make it generate a new channel.
+So we are going to make a form with a `#new-channel-btn` and make it generate a new channel.
 
 >[action]
-> Create a `newChannelBtn` handler near your other button handlers in `/public/index.js`:
+> Create a `new-channel-btn` handler near your other button handlers in `/public/index.js`:
 >
 ```js
 ...
 >
-$('#newChannelBtn').click( () => {
-  let newChannel = $('#newChannelInput').val();
+$('#new-channel-btn').click( () => {
+  let newChannel = $('#new-channel-input').val();
 >
   if(newChannel.length > 0){
     // Emit the new channel to the server
     socket.emit('new channel', newChannel);
-    $('#newChannelInput').val("");
+    $('#new-channel-input').val("");
   }
 })
 ```
@@ -149,10 +149,10 @@ socket.on('user changed channel', (data) => {
   $('.channel-current').removeClass('channel');
   $('.message').remove();
   data.messages.forEach((message) => {
-    $('.messageContainer').append(`
+    $('.message-container').append(`
       <div class="message">
-        <p class="messageUser">${message.sender}: </p>
-        <p class="messageText">${message.message}</p>
+        <p class="message-user">${message.sender}: </p>
+        <p class="message-text">${message.message}</p>
       </div>
     `);
   });
@@ -178,16 +178,16 @@ Let's fix that!
 Let's go to the client message creation function and make sure it only goes to the right channel.
 
 >[action]
-> Update `/public/index.js` the `sendChatBtn` click handler to involve channels:
+> Update `/public/index.js` the `send-chat-btn` click handler to involve channels:
 >
 ```javascript
 ...
 >
-$('#sendChatBtn').click((e) => {
+$('#send-chat-btn').click((e) => {
   e.preventDefault();
   // Get the client's channel
   let channel = $('.channel-current').text();
-  let message = $('#chatInput').val();
+  let message = $('#chat-input').val();
   if(message.length > 0){
     socket.emit('new message', {
       sender : currentUser,
@@ -195,7 +195,7 @@ $('#sendChatBtn').click((e) => {
       //Send the channel over to the server
       channel : channel
     });
-    $('#chatInput').val("");
+    $('#chat-input').val("");
   }
 });
 ```
@@ -228,10 +228,10 @@ socket.on('new message', (data) => {
   //Only append the message if the user is currently in that channel
   let currentChannel = $('.channel-current').text();
   if(currentChannel == data.channel){
-    $('.messageContainer').append(`
+    $('.message-container').append(`
       <div class="message">
-        <p class="messageUser">${data.sender}: </p>
-        <p class="messageText">${data.message}</p>
+        <p class="message-user">${data.sender}: </p>
+        <p class="message-text">${data.message}</p>
       </div>
     `);
   }

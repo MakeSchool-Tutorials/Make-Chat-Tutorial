@@ -41,29 +41,29 @@ I'll give you the new handlebars and CSS so you can fast forward a bit on the st
   </head>
   <body>
 >
-    <form class="usernameForm">
-      <input id="usernameInput" placeholder="Username"></input>
-      <button id="createUserBtn">Join Chat</button>
+    <form class="username-form">
+      <input id="username-input" placeholder="Username"></input>
+      <button id="create-user-btn">Join Chat</button>
     </form>
 >
-    <div class="mainContainer">
-      <div class="channelsAndUsersOnlineContainer">
+    <div class="main-container">
+      <div class="channels-and-users-online-container">
         <h1 class="brand">Make Chat</h1>
         <div class="channels">
-            <h2 class="channelsLabel">Channels</h2>
-            <div class="newChannelForm"><input id="newChannelInput" placeholder="New Channel" /><button id="newChannelBtn">Create</button></div>
+            <h2 class="channels-label">Channels</h2>
+            <div class="new-channel-form"><input id="new-channel-input" placeholder="New Channel" /><button id="new-channel-btn">Create</button></div>
             <div class="channel-current">General</div>
         </div>
         <h2>Online Users</h2>
-        <div class="usersOnline"></div>
+        <div class="users-online"></div>
       </div>
-      <div class="chatContainer">
-        <div class="chatContainerFluid">
-          <div class="messageContainer">
+      <div class="chat-container">
+        <div class="chat-container-fluid">
+          <div class="message-container">
               <h2>Messages</h2>
           </div>
-          <div class="textChatDivide"></div>
-          <div class="chatBox"><textarea id="chatInput" placeholder="Type a message"></textarea><button class="btn" id="sendChatBtn">Send</button></div>
+          <div class="text-chat-divide"></div>
+          <div class="chat-box"><textarea id="chat-input" placeholder="Type a message"></textarea><button class="btn" id="send-chat-btn">Send</button></div>
         </div>
       </div>
     </div>
@@ -75,13 +75,13 @@ I'll give you the new handlebars and CSS so you can fast forward a bit on the st
 > Update `/public/index.css` to the following:
 >
 ```css
-*{
+* {
   font-family: helvetica;
 }
 >
-.usernameForm{
+.username-form {
   display: flex;
-  width : 50%;
+  width: 50%;
   margin-left: auto;
   margin-right: auto;
   padding: 10px;
@@ -90,15 +90,15 @@ I'll give you the new handlebars and CSS so you can fast forward a bit on the st
   align-items: center;
 }
 >
-#usernameInput{
+#username-input {
   font-size: 20px;
   padding: 5px;
   margin-bottom: 5px;
-  width : 100%;
+  width: 100%;
 }
 >
-#createUserBtn{
-  width : 45%;
+#create-user-btn {
+  width: 45%;
   font-size: 20px;
   font-weight: bold;
   padding: 5px;
@@ -106,14 +106,14 @@ I'll give you the new handlebars and CSS so you can fast forward a bit on the st
 >
 .channels {
   display: flex;
-  flex : 6;
+  flex: 6;
   flex-direction: column;
   margin-right: 15px;
   overflow-y: auto;
   width: 100%;
 }
 >
-.newChannelForm{
+.new-channel-form {
   display: flex;
   margin-top: -10px;
   margin-bottom: 10px;
@@ -121,137 +121,137 @@ I'll give you the new handlebars and CSS so you can fast forward a bit on the st
   margin-right: 8px;
 }
 >
-#newChannelInput{
+#new-channel-input {
   font-size: 14px;
-  width : 70%;
+  width: 70%;
 }
 >
-#newChannelBtn{
+#new-channel-btn {
   font-size: 14px;
   width: 30%;
 }
 >
-.channel{
+.channel {
   font-size: 18px;
-  padding : 10px 0px;
-  margin : 2px 0px;
-  cursor : pointer;
+  padding: 10px 0px;
+  margin: 2px 0px;
+  cursor: pointer;
 }
 >
-.channel:hover{
-  color : grey;
+.channel:hover {
+  color: grey;
 }
 >
-.channel-current{
+.channel-current {
   font-weight: bold;
   font-size: 18px;
-  padding : 10px 0px;
-  margin : 2px 0px;
+  padding: 10px 0px;
+  margin: 2px 0px;
   background-color: #4f9689;
 }
 >
-.brand{
+.brand {
   margin-left: 8px;
 }
 >
-.channelsLabel{
+.channels-label {
   margin-left: 8px;
 }
 >
-.chatContainer {
-  width : 80%;
+.chat-container {
+  width: 80%;
   display: flex;
   flex-direction: column;
   background-color: white;
 }
 >
-.chatContainerFluid{
-  margin : 8px;
+.chat-container-fluid {
+  margin: 8px;
   display: flex;
   flex-direction: column;
 }
 >
-.channelsAndUsersOnlineContainer{
-  width : 20%;
-  margin-left : -8px;
+.channels-and-users-online-container {
+  width: 20%;
+  margin-left: -8px;
   margin-top: -8px;
   margin-right: 8px;
   display: flex;
   flex-direction: column;
-  height : 750px;
+  height: 750px;
   background-color: #4d394b;
-  color : white;
+  color: white;
 }
 >
-.usersOnline{
+.users-online {
   margin-left: 8px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
   overflow-y: auto;
-  flex : 4;
+  flex: 4;
 }
 >
-.userOnline{
+.user-online {
   margin-bottom: 8px;
   font-size: 18px;
 }
 >
-.textChatDivide{
-  border : 0.5px solid green;
+.text-chat-divide {
+  border: 0.5px solid green;
   margin-bottom: 10px;
 }
 >
-.chatBox {
+.chat-box {
   display: flex;
   justify-content: center;
-  width : 100%;
+  width: 100%;
 }
 >
 label {
   display: block;
 }
 >
-#chatInput {
-  width : 100%;
+#chat-input {
+  width: 100%;
   display: inline;
 }
 >
-#sendChatBtn{
-  width : 10%;
+#send-chat-btn {
+  width: 10%;
   display: inline;
 }
 >
-.messageContainer{
+.message-container {
   display: flex;
   margin-bottom: 10px;
   padding-bottom: 10px;
   flex-direction: column;
 }
 >
-.message{
+.message {
   margin-bottom: 5px;
 }
 >
-.messageUser{
+.message-user {
   display: inline;
-  color : red;
+  color: red;
   font-weight: bold;
 }
 >
-.messageText{
+.message-text {
   display: inline;
 }
 >
-.mainContainer{
+.main-container {
   display: none;
   flex-direction: row;
-  width : 100%;
+  width: 100%;
 }
 ```
 
-Whew, that's a lot of boilerplate code. You may notice though that if you reload your browser, none of the styling appears. This is because if you check the last item in `/public/index.css`, you'll notice we _set the `display` of `.mainContainer` to `none`._ In the next section, we'll use jQuery to update the `display` to `flex`, and then you'll get to see your beautiful new app!
+Whew, that's a lot of boilerplate code. You may notice though that if you reload your browser, none of the styling appears. This is because if you check the last item in `/public/index.css`, you'll notice we _set the `display` of `.main-container` to `none`._ In the next section, we'll use jQuery to update the `display` to `flex`, and then you'll get to see your beautiful new app!
 
 Before we go any further, let's commit what we have now:
 
@@ -275,13 +275,13 @@ Let's update your `index.js` so it doesn't just log when someone joins the chat,
 $(document).ready(()=>{
   const socket = io.connect();
 >
-  $('#createUserBtn').click((e)=>{
+  $('#create-user-btn').click((e)=>{
     e.preventDefault();
-    if($('#usernameInput').val().length > 0){
-      socket.emit('new user', $('#usernameInput').val());
-      $('.usernameForm').remove();
+    if($('#username-input').val().length > 0){
+      socket.emit('new user', $('#username-input').val());
+      $('.username-form').remove();
       // Have the main page visible
-      $('.mainContainer').css('display', 'flex');
+      $('.main-container').css('display', 'flex');
     }
   });
 >
@@ -289,7 +289,7 @@ $(document).ready(()=>{
   socket.on('new user', (username) => {
     console.log(`${username} has joined the chat`);
     // Add the new user to the online users div
-    $('.usersOnline').append(`<div class="userOnline">${username}</div>`);
+    $('.users-online').append(`<div class="user-online">${username}</div>`);
   })
 >
 })
@@ -301,7 +301,7 @@ Now test everything again with two browsers. Enter a username and you should see
 
 Look at the nice text area we have for sending messages. If only it worked...
 
-We need to wire up the `#sendChatBtn` to **emit** a `new message` event to the server, and have the server **emit** a `new message` event to all connected clients.
+We need to wire up the `#send-chat-btn` to **emit** a `new message` event to the server, and have the server **emit** a `new message` event to all connected clients.
 
 > [action]
 > Update `/public/index.js` to the following code. Read the comments to help understand what each event is doing:
@@ -314,21 +314,21 @@ $(document).ready(()=>{
   //Keep track of the current user
   let currentUser;
 >
-  $('#createUserBtn').click((e)=>{
+  $('#create-user-btn').click((e)=>{
     e.preventDefault();
-    if($('#usernameInput').val().length > 0){
-      socket.emit('new user', $('#usernameInput').val());
+    if($('#username-input').val().length > 0){
+      socket.emit('new user', $('#username-input').val());
       // Save the current user when created
-      currentUser = $('#usernameInput').val();
-      $('.usernameForm').remove();
-      $('.mainContainer').css('display', 'flex');
+      currentUser = $('#username-input').val();
+      $('.username-form').remove();
+      $('.main-container').css('display', 'flex');
     }
   });
 >
-  $('#sendChatBtn').click((e) => {
+  $('#send-chat-btn').click((e) => {
     e.preventDefault();
     // Get the message text value
-    let message = $('#chatInput').val();
+    let message = $('#chat-input').val();
     // Make sure it's not empty
     if(message.length > 0){
       // Emit the message with the current user to the server
@@ -336,14 +336,14 @@ $(document).ready(()=>{
         sender : currentUser,
         message : message,
       });
-      $('#chatInput').val("");
+      $('#chat-input').val("");
     }
   });
 >
   //socket listeners
   socket.on('new user', (username) => {
     console.log(`${username} has joined the chat`);
-    $('.usersOnline').append(`<div class="userOnline">${username}</div>`);
+    $('.users-online').append(`<div class="user-online">${username}</div>`);
   })
 >
 })
@@ -391,10 +391,10 @@ Finally we should update the client to listen for any `new message` events from 
 >
 //Output the new message
 socket.on('new message', (data) => {
-  $('.messageContainer').append(`
+  $('.message-container').append(`
     <div class="message">
-      <p class="messageUser">${data.sender}: </p>
-      <p class="messageText">${data.message}</p>
+      <p class="message-user">${data.sender}: </p>
+      <p class="message-text">${data.message}</p>
     </div>
   `);
 })
