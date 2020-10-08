@@ -301,10 +301,17 @@ Now test everything again with two browsers. Enter a username and you should see
 
 Look at the nice text area we have for sending messages. If only it worked...
 
-We need to wire up the `#send-chat-btn` to **emit** a `new message` event to the server, and have the server **emit** a `new message` event to all connected clients.
+Below we need to wire up the `#send-chat-btn` to **emit** a `new message` event to the server, and have the server **emit** a `new message` event to all connected clients. We can do this by achieving the following:
 
-> [action]
-> Update `/public/index.js` to the following code. Read the comments to help understand what each event is doing:
+1. Saving the client's username to a `currentUser` variable.
+1. Then make sure our send chat button **emits** `new message` to our server. Know that you can emit multiple pieces of data (such as `sender` and `message`)
+
+**Update `/public/index.js` to make this happen!**
+
+Try coding this on your own! If you get stuck, check the solution box below:
+
+> [solution]
+> Read the comments to help understand what each event is doing:
 >
 ```javascript
 //index.js
@@ -349,16 +356,13 @@ $(document).ready(()=>{
 })
 ```
 
-A few things were added here. We are now saving the client's username to the `currentUser` variable.
-
-We then make sure our send chat button **emits** `new message` to our server. As shown, you can emit multiple pieces of data.
-
-In this case we are emitting `sender` and `message`.
-
 Let's now create the `"new message"` listener on our server.
 
->[action]
-> Update `/sockets/chat.js` to the following:
+**Update `/sockets/chat.js` to allow for this! As before, try doing this on your own first!**
+
+**Hint:** remember what you did for `new user`
+
+>[solution]
 >
 ```javascript
 //chat.js
@@ -378,12 +382,13 @@ module.exports = (io, socket) => {
 >
 }
 ```
-
-Simple enough. Notice how we can access the `data` sent like an object.
+> Notice how we can access the `data` sent like an object.
 
 Finally we should update the client to listen for any `new message` events from the server, and when they come, append those new messages to the DOM for the user to see.
 
->[action]
+**You got this one! Give it a shot first! You'll be adding the code to `/public/index,js`**
+
+>[solution]
 > Add a `socket.on('new message')` listener to `/public/index,js`:
 >
 ```javascript

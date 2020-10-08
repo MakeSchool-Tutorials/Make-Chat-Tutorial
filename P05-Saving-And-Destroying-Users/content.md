@@ -117,13 +117,20 @@ The only problem is that users are not leaving when you close a window. The fix 
 
 When a user closes out of the browser window, we want to get rid of them from our `onlineUsers`.
 
->[action]
-> Update `/sockets/chat.js` to include a `disconnect` listener:
+**Update `/sockets/chat.js` to include a `disconnect` listener:**
+
+**Hints:**
+
+- there is a [delete](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/delete) function...
+- There's also a [disconnect](https://socket.io/docs/client-api/#socket-disconnect) listener...
+
+>[solution]
 >
 ```javascript
 ...
 >
-//This fires when a user closes out of the application
+// This fires when a user closes out of the application
+// socket.on("disconnect") is a special listener that fires when a user exits out of the application.
 socket.on('disconnect', () => {
   //This deletes the user by using the username we saved to the socket
   delete onlineUsers[socket.username]
@@ -131,12 +138,11 @@ socket.on('disconnect', () => {
 });
 ```
 
-**socket.on("disconnect")** is a special listener that fires when a user exits out of the application.
-
 Now update the client to **refresh its online users** when a *"user has left"*.
 
->[action]
-> Update `/public/index.js` to include a `user has left` listener:
+**Update `/public/index.js` to include a `user has left` listener:**
+
+>[solution]
 >
 ```javascript
 ...
