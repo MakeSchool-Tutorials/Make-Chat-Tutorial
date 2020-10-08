@@ -312,6 +312,33 @@ $ git commit -m 'Implemented changing channels'
 $ git push
 ```
 
+# One Last Thing...
+
+Start up a fresh session, and try the following:
+
+1. Log in as a user and create 1-2 new channels
+1. Open a new tab and log in as a new user. Are you able to see those new channels you created?
+
+Probably not! **Your challenge now is to allow for created channels to display to users who were not online when the channel was created**
+
+Here's an example scenario:
+
+1. Terry logs on to Make Chat, he is the only online user
+1. Terry creates two channels called "Yogurt" and "Exercise", and leaves encouraging messages in both channels
+1. Amy logs on to Make Chat. She should see that there are 3 channels for her to join: "General", "Yogurt", and "Exercise", and should see Terry's messages in those channels!
+
+**No code will be given for this,** but we have faith in you to put the final piece of the puzzle together!
+
+**Hint:** Think about how you got the list of online users to persist across users and sessions...could you do something similar here?
+
+# Now Commit
+
+```bash
+$ git add .
+$ git commit -m 'Fixed channel persistence'
+$ git push
+```
+
 # Stretch Challenges
 
 Some future enhancements you could do
