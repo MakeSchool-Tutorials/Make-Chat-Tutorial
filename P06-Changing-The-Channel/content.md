@@ -37,7 +37,7 @@ $('#new-channel-btn').click( () => {
     socket.emit('new channel', newChannel);
     $('#new-channel-input').val("");
   }
-})
+});
 ```
 
 Over on the server, make sure the event is registered:
@@ -50,7 +50,7 @@ Over on the server, make sure the event is registered:
 >
   socket.on('new channel', (newChannel) => {
     console.log(newChannel);
-  })
+  });
 ```
 
 Test that your `newChannel` console log is showing before going forward. Baby steps, baby steps.
@@ -77,12 +77,12 @@ Just like the users, we're going to want to save each channel locally so that th
 const io = require('socket.io')(server);
 let onlineUsers = {};
 //Save the channels in this object.
-let channels = {"General" : []}
+let channels = {"General" : []};
 >
 io.on("connection", (socket) => {
   // Make sure to send the channels to our chat file
   require('./sockets/chat.js')(io, socket, onlineUsers, channels);
-})
+});
 ...
 ```
 
@@ -115,7 +115,7 @@ module.exports = (io, socket, onlineUsers, channels) => {
       channel : newChannel,
       messages : channels[newChannel]
     });
-  })
+  });
 }
 ```
 
@@ -156,7 +156,7 @@ socket.on('user changed channel', (data) => {
       </div>
     `);
   });
-})
+});
 ```
 
 Fantastic! Go ahead and try making a new channel. You should see that you join it automatically, and that the new channel is created for all clients.
@@ -188,7 +188,7 @@ $('#send-chat-btn').click((e) => {
   // Get the client's channel
   let channel = $('.channel-current').text();
   let message = $('#chat-input').val();
-  if(message.length > 0){
+  if(message.length > 0) {
     socket.emit('new message', {
       sender : currentUser,
       message : message,
@@ -227,7 +227,7 @@ And finally let's update the `new message` listener on the client to respect cha
 socket.on('new message', (data) => {
   //Only append the message if the user is currently in that channel
   let currentChannel = $('.channel-current').text();
-  if(currentChannel == data.channel){
+  if(currentChannel == data.channel) {
     $('.message-container').append(`
       <div class="message">
         <p class="message-user">${data.sender}: </p>
@@ -235,7 +235,7 @@ socket.on('new message', (data) => {
       </div>
     `);
   }
-})
+});
 ```
 
 # Now Commit
@@ -294,10 +294,11 @@ socket.on('user changed channel', (newChannel) => {
     channel : newChannel,
     messages : channels[newChannel]
   });
+});
 >
 ...
 >
-})
+});
 ```
 
 Check out your application. Everything should now be working as it should! Great work!
